@@ -151,9 +151,9 @@ export default function PromoPage() {
             </div>
           </div>
 
-          <div className="shrink-0 mt-6 w-full px-8 relative z-50">
+          <div className="shrink-0 mt-6 w-full px-8 relative">
   <button
-    className="bg-red-600 hover:bg-red-700 text-white text-[26px] font-black w-full py-2 rounded-xl shadow-[0_4px_15px_rgba(0,0,0,0.3)] uppercase relative z-50"
+    className="bg-red-600 hover:bg-red-700 text-white text-[26px] font-black w-full py-2 rounded-xl shadow-[0_4px_15px_rgba(0,0,0,0.3)] uppercase relative"
     onClick={scrollToForm}
   >
     JOIN NOW
