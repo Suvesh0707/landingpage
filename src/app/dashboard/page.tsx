@@ -23,6 +23,11 @@ export default function Dashboard() {
     setLoading(false);
   }
 
+  // Excel download karne ka naya function
+  const handleDownload = () => {
+    window.location.href = '/api/export';
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -38,16 +43,30 @@ export default function Dashboard() {
               <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#888' }}>Last updated: {lastUpdated}</p>
             )}
           </div>
-          <button
-            onClick={fetchData}
-            style={{
-              background: '#2563eb', color: '#fff', border: 'none',
-              padding: '10px 20px', borderRadius: '8px', cursor: 'pointer',
-              fontSize: '14px', fontWeight: 600,
-            }}
-          >
-            Refresh
-          </button>
+          
+          {/* Buttons Container: Refresh aur Download dono yahan hain */}
+          <div style={{ display: 'flex', gap: '12px' }}>
+            <button
+              onClick={fetchData}
+              style={{
+                background: '#2563eb', color: '#fff', border: 'none',
+                padding: '10px 20px', borderRadius: '8px', cursor: 'pointer',
+                fontSize: '14px', fontWeight: 600,
+              }}
+            >
+              Refresh
+            </button>
+            <button
+              onClick={handleDownload}
+              style={{
+                background: '#10b981', color: '#fff', border: 'none',
+                padding: '10px 20px', borderRadius: '8px', cursor: 'pointer',
+                fontSize: '14px', fontWeight: 600,
+              }}
+            >
+              Download Excel
+            </button>
+          </div>
         </div>
 
         {loading ? (
