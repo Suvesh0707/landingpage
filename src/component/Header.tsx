@@ -15,6 +15,7 @@ export default function PromoPage() {
     const isMobile = window.innerWidth < 1024;
     const targetId = isMobile ? 'mobile-form' : 'desktop-form';
     const element = document.getElementById(targetId);
+    console.log(element);
     
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -150,14 +151,14 @@ export default function PromoPage() {
             </div>
           </div>
 
-          <div className="shrink-0 mt-6 w-full px-8">
-            <button
-              onClick={scrollToForm}
-              className="bg-red-600 hover:bg-red-700 text-white text-[26px] font-black w-full py-2 rounded-xl shadow-[0_4px_15px_rgba(0,0,0,0.3)] uppercase"
-            >
-              JOIN NOW
-            </button>
-          </div>
+          <div className="shrink-0 mt-6 w-full px-8 relative z-50">
+  <button
+    className="bg-red-600 hover:bg-red-700 text-white text-[26px] font-black w-full py-2 rounded-xl shadow-[0_4px_15px_rgba(0,0,0,0.3)] uppercase relative z-50"
+    onClick={scrollToForm}
+  >
+    JOIN NOW
+  </button>
+</div>
 
           <div className="grid grid-cols-2 gap-3 w-full z-30 mt-8 mb-16">
             <FeatureCard icon="/icon1.png" text="Get trades from SEBI Registered RA" />
