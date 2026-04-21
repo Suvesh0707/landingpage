@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function PromoPage() {
   const [timeLeft, setTimeLeft] = useState(897);
@@ -10,7 +10,16 @@ export default function PromoPage() {
   const [error, setError] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const formRef = useRef<HTMLDivElement>(null);
+
+  const scrollToForm = () => {
+    const isMobile = window.innerWidth < 1024;
+    const targetId = isMobile ? 'mobile-form' : 'desktop-form';
+    const element = document.getElementById(targetId);
+    
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   const handleSubmit = async () => {
     setError('');
@@ -63,7 +72,7 @@ export default function PromoPage() {
   }
 
   return (
-    <main className="min-h-screen w-full text-white flex flex-col items-center font-sans overflow-y-auto">
+    <main className="min-h-screen w-full text-white flex flex-col items-center font-sans">
 
       {/* Error popup */}
       {error && (
@@ -102,7 +111,7 @@ export default function PromoPage() {
           MOBILE LAYOUT  (hidden on lg+)
       ════════════════════════════════ */}
       <div className="lg:hidden w-full" style={{ background: 'linear-gradient(to bottom, #0e3c2a 0%, #0e3c2a 60%, #c8d3cd 100%)' }}>
-        <div className="flex flex-col items-center w-full max-w-[420px] mx-auto px-4 pt-6">
+        <div className="flex flex-col items-center w-full max-w-[390px] mx-auto px-4 pt-6">
 
           <div className="relative w-full h-14 shrink-0">
             <Image src="/img.png" alt="TG Levels" fill className="object-contain" priority />
@@ -143,8 +152,8 @@ export default function PromoPage() {
 
           <div className="shrink-0 mt-6 w-full px-8">
             <button
-              onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-              className="bg-red-600 hover:bg-red-700 text-white text-[26px] font-black w-full py-3 rounded-xl shadow-[0_4px_15px_rgba(0,0,0,0.3)] uppercase"
+              onClick={scrollToForm}
+              className="bg-red-600 hover:bg-red-700 text-white text-[26px] font-black w-full py-2 rounded-xl shadow-[0_4px_15px_rgba(0,0,0,0.3)] uppercase"
             >
               JOIN NOW
             </button>
@@ -160,7 +169,7 @@ export default function PromoPage() {
       </div>
 
       {/* Mobile form */}
-      <div ref={formRef} className="lg:hidden w-full bg-[#f0f2f5] px-4 py-10 flex justify-center">
+      <div id="mobile-form" className="lg:hidden w-full bg-[#f0f2f5] px-4 py-10 flex justify-center">
         <div className="w-full max-w-[420px] bg-white rounded-[28px] shadow-lg px-7 py-10 flex flex-col items-center">
           <div className="self-end -mt-6 -mr-3 w-10 h-10 rounded-full bg-[#e8ecf0] opacity-60 mb-2" />
           <h2 className="text-[34px] font-black text-[#0f1923] text-center leading-tight mb-2">Join Us Now</h2>
@@ -254,7 +263,7 @@ export default function PromoPage() {
           {/* CTA */}
           <div className="mt-4 w-full max-w-[340px]">
             <button
-              onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+              onClick={scrollToForm}
               className="w-full bg-red-600 hover:bg-red-700 transition-colors text-white text-xl font-black py-3.5 rounded-2xl shadow-[0_6px_30px_rgba(185,28,28,0.5)] uppercase tracking-wide"
             >
               JOIN NOW
@@ -280,7 +289,7 @@ export default function PromoPage() {
       </div>
 
       {/* Desktop Form Section */}
-      <div className="hidden lg:flex w-full bg-[#f0f2f5] py-20 px-16 justify-center">
+      <div id="desktop-form" className="hidden lg:flex w-full bg-[#f0f2f5] py-20 px-16 justify-center">
         <div className="w-full max-w-6xl flex items-center gap-20">
 
           {/* Left — Why join */}

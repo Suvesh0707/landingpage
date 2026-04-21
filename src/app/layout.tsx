@@ -23,8 +23,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    // Yahan se maine 'h-full' hata diya hai aur sirf 'scroll-smooth' rakha hai
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth`}>
+      {/* Yahan se 'min-h-full flex flex-col' hata diya hai taaki scroll naturally kaam kare */}
+      <body>{children}</body>
     </html>
   );
 }
