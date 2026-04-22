@@ -2,14 +2,15 @@
 
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function PromoPage() {
   const [timeLeft, setTimeLeft] = useState(897);
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
   const [error, setError] = useState('');
-  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const scrollToForm = () => {
     const isMobile = window.innerWidth < 1024;
@@ -36,7 +37,7 @@ export default function PromoPage() {
       });
       const data = await res.json();
       if (!res.ok) { setError(data.error || 'Something went wrong.'); }
-      else { setSubmitted(true); }
+      else { router.push(`/thank-you?name=${encodeURIComponent(fullName.trim())}`); }
     } catch { setError('Network error. Please try again.'); }
     finally { setLoading(false); }
   };
@@ -52,25 +53,6 @@ export default function PromoPage() {
     const sec = s % 60;
     return `${m.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
   };
-
-  if (submitted) {
-    return (
-      <main className="min-h-screen w-full flex flex-col items-center justify-center font-sans" style={{ background: 'linear-gradient(160deg, #0e3c2a 0%, #0e3c2a 60%, #c8d3cd 100%)' }}>
-        <div className="bg-white rounded-3xl shadow-2xl px-10 py-14 flex flex-col items-center max-w-md w-full mx-4 text-center">
-          <div className="w-16 h-16 rounded-full bg-[#0e3c2a] flex items-center justify-center mb-5">
-            <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-white" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="20 6 9 17 4 12" />
-            </svg>
-          </div>
-          <h2 className="text-[36px] font-black text-[#0e3c2a] leading-tight mb-3">Thank You!</h2>
-          <p className="text-[16px] text-[#4b5563] leading-relaxed mb-2">
-            Your registration is confirmed, <span className="font-bold text-[#0e3c2a]">{fullName}</span>.
-          </p>
-          <p className="text-[15px] text-[#6b7280]">You will receive your first trade signal soon on <span className="font-bold text-[#0e3c2a]">{phone}</span>.</p>
-        </div>
-      </main>
-    );
-  }
 
   return (
     <main className="min-h-screen w-full text-white flex flex-col items-center font-sans">

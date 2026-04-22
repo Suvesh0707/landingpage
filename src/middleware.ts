@@ -3,15 +3,22 @@ import { NextRequest, NextResponse } from 'next/server';
 export function middleware(request: NextRequest) {
   const token = request.cookies.get('dashboard_token')?.value;
   const validToken = process.env.DASHBOARD_SECRET;
+  const isLoggedIn = token === validToken;
+  const { pathname } = request.nextUrl;
 
-  if (token !== validToken) {
-    const loginUrl = new URL('/dashboard/login', request.url);
-    return NextResponse.redirect(loginUrl);
+  // Protect /dashboard — redirect to login if not authenticated
+  if (pathname === '/dashboard' && !isLoggedIn) {
+    return NextResponse.redirect(new URL('/dashboard/login', request.url));
+  }
+
+  // If already logged in, skip the login page
+  if (pathname === '/dashboard/login' && isLoggedIn) {
+    return NextResponse.redirect(new URL('/dashboard', request.url));
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/dashboard'],
+  matcher: ['/dashboard', '/dashboard/login'],
 };
