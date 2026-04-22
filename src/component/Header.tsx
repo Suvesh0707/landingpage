@@ -92,18 +92,18 @@ export default function PromoPage() {
       )}
 
       {/* ── BANNER (shared) ── */}
-      <div className="w-full bg-[#b52222] py-2 px-4 flex justify-between items-center text-[10px] md:text-xs font-semibold z-50 shrink-0 sticky top-0">
-        <div className="flex items-center gap-1.5">
-          <div className="w-2 h-2 bg-pink-400 rounded-full"></div>
-          <span className="opacity-90">Offer ends in</span>
-          <div className="bg-black/20 px-2 py-0.5 rounded text-sm font-bold w-[50px] text-center">
+      <div className="w-full bg-[#b52222] py-2 px-3 flex justify-between items-center font-semibold z-50 shrink-0 sticky top-0" style={{ fontSize: 'clamp(7px, 2.5vw, 10px)' }}>
+        <div className="flex items-center gap-1">
+          <div className="w-1.5 h-1.5 bg-pink-400 rounded-full shrink-0"></div>
+          <span className="opacity-90 whitespace-nowrap">Offer ends in</span>
+          <div className="bg-black/20 px-1.5 py-0.5 rounded font-bold text-center" style={{ fontSize: 'clamp(8px, 3vw, 14px)', minWidth: '40px' }}>
             {formatTime(timeLeft)}
           </div>
         </div>
-        <div className="flex items-center gap-1">
-          <span className="opacity-90">— Only </span>
+        <div className="flex items-center gap-0.5 whitespace-nowrap">
+          <span className="opacity-90">Only </span>
           <span className="font-bold">23</span>
-          <span className="opacity-90"> spots left at </span>
+          <span className="opacity-90"> spots at </span>
           <span className="font-bold">₹59</span>
         </div>
       </div>
@@ -118,27 +118,27 @@ export default function PromoPage() {
             <Image src="/img.png" alt="TG Levels" fill className="object-contain" priority />
           </div>
 
-          <div className="border border-white/40 rounded-full px-4 py-1 flex items-center gap-2 bg-black/40 shrink-0 mt-6">
-            <div className="w-4 h-4 bg-[#a3e635] rounded-full flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="none" className="w-3 h-3 text-black" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+          <div className="border border-white/40 rounded-full px-3 py-1 flex items-center gap-1.5 bg-black/40 shrink-0 mt-6">
+            <div className="w-3.5 h-3.5 bg-[#a3e635] rounded-full flex items-center justify-center shrink-0">
+              <svg viewBox="0 0 24 24" fill="none" className="w-2.5 h-2.5 text-black" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
             </div>
-            <span className="text-[10px] font-bold tracking-wide uppercase">SEBI Registered Research Analyst</span>
+            <span className="font-bold uppercase" style={{ fontSize: 'clamp(7px, 2.3vw, 10px)', letterSpacing: '0.05em' }}>SEBI Registered Research Analyst</span>
           </div>
 
           <div className="text-center shrink-0 mt-6">
-            <h1 className="text-[30px] font-bold leading-none tracking-tight whitespace-nowrap">
+            <h1 className="font-bold leading-none tracking-tight" style={{ fontSize: 'clamp(16px, 8vw, 30px)' }}>
               Nifty & Sensex <span className="text-[#a3e635]">Options</span>
             </h1>
-            <h2 className="text-[30px] font-bold text-[#a3e635] mt-1">Trades</h2>
+            <h2 className="font-bold text-[#a3e635] mt-1" style={{ fontSize: 'clamp(16px, 8vw, 30px)' }}>Trades</h2>
           </div>
 
           <div className="flex items-baseline justify-center shrink-0 mt-2">
-            <div className="text-[76px] leading-none font-black text-[#a3e635] tracking-tighter">
-              ₹59<span className="text-[64px] ml-1">/</span>
+            <div className="leading-none font-black text-[#a3e635] tracking-tighter" style={{ fontSize: 'clamp(24px, 20vw, 76px)' }}>
+              ₹59<span className="ml-1" style={{ fontSize: 'clamp(20px, 17vw, 64px)' }}>/</span>
             </div>
-            <div className="text-4xl font-bold ml-2">1 Trade **</div>
+            <div className="font-bold ml-2 whitespace-nowrap" style={{ fontSize: 'clamp(12px, 8vw, 36px)' }}>1 Trade **</div>
           </div>
 
           <div className="relative w-full flex flex-col items-center -mt-30">
