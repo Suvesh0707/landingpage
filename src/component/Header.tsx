@@ -97,7 +97,7 @@ export default function PromoPage() {
         <div className="flex flex-col items-center w-full max-w-[390px] mx-auto px-4 pt-6">
 
           <div className="relative w-full h-14 shrink-0">
-            <Image src="/img.png" alt="TG Levels" fill className="object-contain" priority />
+            <Image src="/img.png" alt="TG Levels" fill className="object-contain" priority sizes="390px" />
           </div>
 
           <div className="border border-white/40 rounded-full px-3 py-1 flex items-center gap-1.5 bg-black/40 shrink-0 mt-6">
@@ -343,7 +343,7 @@ function FeatureCard({ icon, text }: { icon: string; text: string }) {
   return (
     <div className="bg-[#e8efeb] rounded-xl p-2.5 flex items-center gap-2 shadow-sm border border-white/20 min-h-[54px]">
       <div className="shrink-0 relative w-7 h-7 flex items-center justify-center">
-        <Image src={icon} alt="icon" width={28} height={28} className="object-contain" />
+        <Image src={icon} alt="icon" width={28} height={28} style={{ width: 'auto', height: 'auto' }} />
       </div>
       <p className="text-[10px] text-[#0a3a22] font-extrabold leading-tight">{text}</p>
     </div>

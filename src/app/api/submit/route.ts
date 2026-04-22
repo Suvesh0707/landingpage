@@ -24,11 +24,13 @@ export async function POST(req: NextRequest) {
     await Submission.create({ fullName, phone });
 
     // Send live to Google Sheets via Apps Script
-    await fetch(process.env.GOOGLE_SCRIPT_URL!, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ timestamp, fullName, phone }),
-    });
+    if (process.env.GOOGLE_SCRIPT_URL) {
+      await fetch(process.env.GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ timestamp, fullName, phone }),
+      });
+    }
 
     return NextResponse.json({ success: true });
   } catch (err: unknown) {
