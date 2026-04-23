@@ -1,9 +1,0 @@
-{
-  "redirects": [
-    {
-      "source": "/landingpage",
-      "destination": "https://mentorcha.us",
-      "permanent": true
-    }
-  ]
-}
