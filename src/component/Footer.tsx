@@ -58,7 +58,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
         <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-12">
           {/* Brand */}
-          <div className="lg:col-span-3 sm:col-span-2 flex flex-col items-start text-left">
+          <div className="lg:col-span-3 sm:col-span-2 flex flex-col items-center sm:items-start text-center sm:text-left">
             <Image
               src="/img.png"
               alt="TG Levels"
@@ -66,14 +66,14 @@ export default function Footer() {
               height={48}
               className="h-auto w-40"
             />
-            <p className="mt-3 text-sm leading-6 text-gray-300 text-left">
+            <p className="mt-3 text-sm leading-6 text-gray-300">
               TG levels is managed by SEBI registered Research Analyst based in
               Mumbai, TG levels is incorporated by individuals having experience
               in the Indian stock market, at TG levels the only objective is to
               give our subscribers quality advice for intraday and positional
               trading.
             </p>
-            <div className="mt-5 flex flex-row flex-nowrap items-center justify-start gap-3 w-full">
+            <div className="mt-5 flex flex-row flex-nowrap items-center justify-center sm:justify-start gap-3 w-full">
               <a
                 href="https://apps.apple.com/us/app/tg-levels-stock-market-mentor/id6754587128"
                 target="_blank"
